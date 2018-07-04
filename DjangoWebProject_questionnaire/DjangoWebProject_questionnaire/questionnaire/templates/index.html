@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<p>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .content{
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .question{
+            margin-top: 0px;
+        }
+        .choice{
+            display: inline-block;
+        }
+        .choices{
+            margin-top: -35px;
+        }
+        .context {
+           margin-top: -13px;
+        }
+        
+    </style>
+    <script type="text/javascript">
+        
+        test = function ()
+        {
+            var radios = document.getElementsById("sss");
+            var tf = false;
+            for (var i = 0; i < radios.length; i++) {
+                var radio = radios[i];
+                tf = tf || radio.checked;
+            }
+            
+        }
+        test2 = function () {
+            var ex = true;
+            for (var i = 1; i <= 10; i++) {
+                ii = i.toString()
+                var radios = document.getElementsByName(ii);
+                var tf = false;
+                for (var j = 0; j < radios.length; j++) {
+                    var radio = radios[j];
+                    
+                    tf = tf || radio.checked;
+                }
+                ex = ex && tf;  
+            }
+            if (!ex) {
+                alert("must choose every item")
+                return false;
+            }   
+            
+        }
+
+   </script>
+</head>
+<form action="{% url 'index_action' id%} " method="post" name="form1" onsubmit="return test2()">
+    {% csrf_token %}
+<div class="content">
+    <h1>问卷</h1>
+    {% for content in contents %}
+    <div class="question">
+        
+        <p>{{forloop.counter}}.{{content.item}} </p>
+        <div class="choices">
+            <p class="choice"><input type="radio" id="cho{{forloop.counter}}" name="{{forloop.counter}}" value="yes"/> yes</p>
+            <p class="choice"><input type="radio" id="cho{{forloop.counter}}" name="{{forloop.counter}}" value="no"/> no</p>
+        </div>
+
+        <div class="context">
+            <textarea style="width:400px;height:20px" name="comment{{forloop.counter}}"></textarea>
+        </div>
+    </div>
+    {% endfor %}  
+    <input type="submit" style="margin-top: 40px" value="submit and next" >
+    <div>
+        <p>{{id}}/50</p>
+    </div>
+    
+    
+</div>
+
+</form>
+</body>
+</html>
+
