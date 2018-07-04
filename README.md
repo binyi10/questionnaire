@@ -17,7 +17,7 @@ git clone https://github.com/binyi10/questionnaire.git
 * 进入
 questionnaire/DjangoWebProject_questionnaire/DjangoWebProject_ques/DjangoWebProject_ques目录
 * 在setteing.py文件中 ALLOWED_HOSTS中添加你服务器的ip（比如你的ip是127.0.0.0）
-![添加ip](https://raw.githubusercontent.com/LiangCY/questionnaire/master/screenshots/index.jpg)
+![添加ip](https://github.com/binyi10/questionnaire/blob/master/pic/addip.png)
 
 ### Run
 ``` bash
